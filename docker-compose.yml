@@ -1,0 +1,15 @@
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Australia/Brisbane
+      - PASSWORD=change_this_password
+    volumes:
+      - ./config:/config
+      - ./projects:/projects
+    ports:
+      - "8443:8443"
+    restart: unless-stopped
